@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Premium typography */
+
+h1,h2,h3,h4{
+letter-spacing:-0.02em;
+font-weight:600;
+}
+
+/* Luxury spacing */
+
+section{
+padding-top:120px;
+padding-bottom:120px;
+}
+
+/* Smooth UI */
+
+button{
+transition:all .3s ease;
+}
+
+img{
+transition:transform .6s ease;
+}
+
+/* subtle background tone */
+
+body{
+background:#ffffff;
+color:#111111;
+font-feature-settings:"liga" 1;
+}

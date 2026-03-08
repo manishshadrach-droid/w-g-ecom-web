@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String?
+  email     String   @unique
+  password  String?
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  orders    Order[]
+}
+
+model Product {
+  id          String   @id @default(uuid())
+  name        String
+  slug        String   @unique
+  description String
+  price       Int
+  stock       Int
+  images      String[]
+  category    String
+  isFeatured  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model Order {
+  id        String      @id @default(uuid())
+  userId    String
+  total     Int
+  status    OrderStatus @default(PENDING)
+  paymentId String?
+  createdAt DateTime    @default(now())
+  user      User        @relation(fields: [userId], references: [id])
+  items     OrderItem[]
+}
+
+model OrderItem {
+  id        String @id @default(uuid())
+  orderId   String
+  productId String
+  quantity  Int
+  price     Int
+  order     Order  @relation(fields: [orderId], references: [id])
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
