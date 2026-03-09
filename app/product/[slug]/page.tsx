@@ -1,7 +1,8 @@
 import ProductGallery from "@/app/components/ProductGallery"
 import RelatedProducts from "@/app/components/RelatedProducts"
+import { Product } from "@/types/product"
 
-const products = [
+const products: Product[] = [
 
 {
 id:1,

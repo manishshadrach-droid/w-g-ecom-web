@@ -1,54 +1,82 @@
 "use client"
 
+import Link from "next/link"
 import { useCartStore } from "@/lib/store/cartStore"
 
-export default function MiniCart(){
+export default function MiniCart() {
 
-const cart = useCartStore(state=>state.cart)
-const isOpen = useCartStore(state=>state.isCartOpen)
-const toggleCart = useCartStore(state=>state.toggleCart)
+  const items = useCartStore((state) => state.items)
+  const isOpen = useCartStore((state) => state.isOpen)
+  const toggleCart = useCartStore((state) => state.toggleCart)
 
-return(
+  const totalItems = items.reduce(
+    (sum, item) => sum + item.quantity,
+    0
+  )
 
-<div
-className={`fixed top-0 right-0 h-full w-96 bg-white shadow-xl z-50 transform transition-transform
-${isOpen ? "translate-x-0" : "translate-x-full"}
-`}
->
+  return (
+    <div className="relative">
 
-<div className="p-6 border-b flex justify-between">
+      <button
+        onClick={toggleCart}
+        className="relative"
+      >
+        🛒
 
-<h3 className="font-semibold text-lg">
-Your Cart
-</h3>
+        {totalItems > 0 && (
+          <span className="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full px-2 py-1">
+            {totalItems}
+          </span>
+        )}
+      </button>
 
-<button onClick={toggleCart}>
-✕
-</button>
+      {isOpen && (
+        <div className="absolute right-0 mt-4 w-80 bg-white shadow-lg rounded-xl p-4 z-50">
 
-</div>
+          <h3 className="font-semibold mb-4">
+            Your Cart
+          </h3>
 
-<div className="p-6 space-y-4">
+          {items.length === 0 && (
+            <p className="text-gray-500">
+              Cart is empty
+            </p>
+          )}
 
-{cart.length===0 && (
-<p className="text-gray-500">
-Cart is empty
-</p>
-)}
+          {items.map((item) => (
+            <div
+              key={item.id}
+              className="flex items-center gap-3 mb-3"
+            >
 
-{cart.map((item,i)=>(
-<div key={i} className="flex justify-between">
+              <img
+                src={item.image}
+                className="w-12 h-12 object-cover rounded"
+              />
 
-<p>{item.name}</p>
-<p>₹{item.price}</p>
+              <div className="flex-1">
+                <p className="text-sm font-medium">
+                  {item.name}
+                </p>
 
-</div>
-))}
+                <p className="text-xs text-gray-600">
+                  ₹{item.price} × {item.quantity}
+                </p>
+              </div>
 
-</div>
+            </div>
+          ))}
 
-</div>
+          <Link
+            href="/cart"
+            className="block mt-4 bg-black text-white text-center py-2 rounded-lg"
+          >
+            View Cart
+          </Link>
 
-)
+        </div>
+      )}
 
+    </div>
+  )
 }

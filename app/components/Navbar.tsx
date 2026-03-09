@@ -7,7 +7,7 @@ import { ShoppingBag } from "lucide-react"
 
 export default function Navbar() {
 
-const cart = useCartStore((state)=>state.cart)
+const items = useCartStore((state)=>state.items)
 const toggleCart = useCartStore((state)=>state.toggleCart)
 
 const [scrolled,setScrolled]=useState(false)
@@ -140,10 +140,10 @@ className="relative flex items-center justify-center w-11 h-11 rounded-full bg-y
 
 <ShoppingBag size={18}/>
 
-{cart.length>0 &&(
+{items.length>0 &&(
 
 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 rounded-full">
-{cart.length}
+{items.length}
 </span>
 
 )}

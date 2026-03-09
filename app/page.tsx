@@ -8,6 +8,7 @@ import Testimonials from "./components/Testimonials"
 import InspirationGrid from "./components/InspirationGrid"
 import ScrollReveal from "./components/ScrollReveal"
 import PageTransition from "./components/PageTransition"
+import { Product } from "@/types/product"
 
 import Link from "next/link"
 import Image from "next/image"

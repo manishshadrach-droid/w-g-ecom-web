@@ -1,120 +1,118 @@
 "use client"
 
-import Image from "next/image"
-import Link from "next/link"
-import { useCartStore } from "@/lib/store/cartStore"
 import { useState } from "react"
-import ProductQuickView from "./ProductQuickView"
+import Link from "next/link"
+import { Product } from "@/types/product"
 
-const products=[
+export default function FeaturedProducts() {
 
-{
-id:1,
-slug:"mandala1",
-name:"Mandala Wall Art – Classic",
-price:2999,
-image:"/product/mandala1.jpg"
-},
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
 
-{
-id:2,
-slug:"mandala2",
-name:"Mandala Wall Art – Premium",
-price:3499,
-image:"/product/mandala2.jpg"
-},
+  const products: Product[] = [
+    {
+      id: 1,
+      slug: "mandala1",
+      name: "Handcrafted Metal Mandala Wall Art",
+      price: 2499,
+      image: "/product/mandala1.jpg",
+    },
+    {
+      id: 2,
+      slug: "mandala2",
+      name: "Gold Finish Lotus Urli Bowl",
+      price: 1899,
+      image: "/product/mandala2.jpg",
+    },
+    {
+      id: 3,
+      slug: "mandala3",
+      name: "Decorative Mandala Wall Frame",
+      price: 2999,
+      image: "/product/mandala3.jpg",
+    },
+  ]
 
-{
-id:3,
-slug:"mandala3",
-name:"Mandala Wall Art – Royal",
-price:3999,
-image:"/product/mandala3.jpg"
-}
+  return (
+    <section className="max-w-7xl mx-auto px-8 py-20">
 
-]
+      <h2 className="text-3xl font-bold mb-10 text-center">
+        Featured Collection
+      </h2>
 
-export default function FeaturedProducts(){
+      <div className="grid md:grid-cols-3 gap-8">
 
-const addToCart = useCartStore((state)=>state.addToCart)
+        {products.map((product) => (
 
-const [selectedProduct,setSelectedProduct]=useState(null)
+          <div
+            key={product.id}
+            className="relative bg-white rounded-2xl shadow-sm overflow-hidden group"
+          >
 
-return(
+            <Link href={`/product/${product.slug}`}>
 
-<section className="bg-white">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="h-72 w-full object-cover group-hover:scale-105 transition"
+              />
 
-<div className="max-w-7xl mx-auto px-8">
+              <div className="p-4">
 
-<h2 className="text-4xl font-semibold tracking-tight text-center mb-20">
-Featured Products
-</h2>
+                <h3 className="font-medium text-lg">
+                  {product.name}
+                </h3>
 
-<div className="grid md:grid-cols-3 gap-14">
+                <p className="font-semibold">
+                  ₹{product.price}
+                </p>
 
-{products.map(product=>(
+              </div>
 
-<div
-key={product.id}
-className="group bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition duration-500 overflow-hidden"
->
+            </Link>
 
-<div className="relative h-80 overflow-hidden">
+            <button
+              onClick={() => setSelectedProduct(product)}
+              className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white text-black px-4 py-2 text-sm rounded-lg opacity-0 group-hover:opacity-100 transition shadow"
+            >
+              Quick View
+            </button>
 
-<Link href={`/product/${product.slug}`}>
+          </div>
 
-<Image
-src={product.image}
-alt={product.name}
-fill
-className="object-cover group-hover:scale-105"
-/>
+        ))}
 
-</Link>
+      </div>
 
-<button
-onClick={()=>setSelectedProduct(product)}
-className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white text-black px-4 py-2 text-sm rounded-lg opacity-0 group-hover:opacity-100 transition shadow"
->
-Quick View
-</button>
+      {selectedProduct && (
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
 
-</div>
+          <div className="bg-white p-8 rounded-xl max-w-md">
 
-<div className="p-6">
+            <h3 className="text-xl font-semibold mb-4">
+              {selectedProduct.name}
+            </h3>
 
-<h3 className="text-lg font-medium mb-1">
-{product.name}
-</h3>
+            <img
+              src={selectedProduct.image}
+              className="mb-4 rounded-lg"
+            />
 
-<p className="text-gray-500 text-sm mb-5">
-₹{product.price}
-</p>
+            <p className="font-semibold mb-4">
+              ₹{selectedProduct.price}
+            </p>
 
-<button
-onClick={()=>addToCart(product)}
-className="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800"
->
-Add to Cart
-</button>
+            <button
+              onClick={() => setSelectedProduct(null)}
+              className="bg-black text-white px-4 py-2 rounded-lg"
+            >
+              Close
+            </button>
 
-</div>
+          </div>
 
-</div>
+        </div>
+      )}
 
-))}
-
-</div>
-
-</div>
-
-<ProductQuickView
-product={selectedProduct}
-onClose={()=>setSelectedProduct(null)}
-/>
-
-</section>
-
-)
-
+    </section>
+  )
 }

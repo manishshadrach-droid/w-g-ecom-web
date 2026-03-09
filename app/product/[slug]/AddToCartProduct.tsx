@@ -19,12 +19,13 @@ export default function AddToCartButton({ product }: AddToCartButtonProps) {
 
   const handleAddToCart = () => {
     addToCart({
-      id: product.id.toString(),
+      id: product.id,
       name: product.name,
       price: product.price,
       image: product.image,
       quantity: 1
     })
+
     alert(`${product.name} added to cart!`)
   }
 
