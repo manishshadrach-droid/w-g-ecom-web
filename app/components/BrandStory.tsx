@@ -9,7 +9,7 @@ return(
 <section className="max-w-7xl mx-auto px-8 py-28 grid md:grid-cols-2 gap-16 items-center">
 
 <Image
-src="/hero/hero.jpg"
+src="/hero/hero-new.jpg"
 alt="Craftsmanship"
 width={700}
 height={500}
