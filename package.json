@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@prisma/client": "^6.19.2",
-    "@studio-freight/lenis": "^1.0.42",
     "bcrypt": "^6.0.0",
     "cloudinary": "^2.9.0",
     "framer-motion": "^12.35.2",
