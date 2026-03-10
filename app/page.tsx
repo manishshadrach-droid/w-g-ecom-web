@@ -6,51 +6,34 @@ import ShopByRoom from "./components/ShopByRoom"
 import BrandStory from "./components/BrandStory"
 import Testimonials from "./components/Testimonials"
 
-
 export default function HomePage() {
 
-return (
+  return (
 
-<main className="pt-24">
+    <main className="pt-24">
 
-{/* HERO */}
+      {/* HERO */}
+      <MegaHero />
 
-<MegaHero/>
+      {/* LUXURY SHOWCASE (left slider + right CTA panel) */}
+      <LuxuryShowcase />
 
-{/* IKEA STYLE PROMO SECTION */}
+      {/* COLLECTION GRID */}
+      <CollectionGrid />
 
-<LuxuryShowcase/>
+      {/* SHOP THE ROOM */}
+      <ShopTheRoom />
 
-{/* PRODUCT COLLECTION GRID */}
+      {/* SHOP BY ROOM */}
+      <ShopByRoom />
 
-<CollectionGrid/>
+      {/* BRAND STORY */}
+      <BrandStory />
 
-{/* SHOP THE ROOM */}
+      {/* TESTIMONIALS */}
+      <Testimonials />
 
-<ScrollReveal>
-<ShopTheRoom/>
-</ScrollReveal>
+    </main>
 
-{/* SHOP BY ROOM */}
-
-<ScrollReveal>
-<ShopByRoom/>
-</ScrollReveal>
-
-{/* BRAND STORY */}
-
-<ScrollReveal>
-<BrandStory/>
-</ScrollReveal>
-
-{/* TESTIMONIALS */}
-
-<ScrollReveal>
-<Testimonials/>
-</ScrollReveal>
-
-</main>
-
-)
-
+  )
 }
