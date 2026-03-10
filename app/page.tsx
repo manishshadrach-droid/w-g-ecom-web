@@ -5,7 +5,7 @@ import ShopTheRoom from "./components/ShopTheRoom"
 import ShopByRoom from "./components/ShopByRoom"
 import BrandStory from "./components/BrandStory"
 import Testimonials from "./components/Testimonials"
-import ScrollReveal from "./components/ScrollReveal"
+
 
 export default function HomePage() {
 
