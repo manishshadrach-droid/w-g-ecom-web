@@ -7,7 +7,7 @@ import Footer from "./components/Footer"
 import ScrollIndicator from "./components/ScrollIndicator"
 import WhatsAppFloat from "./components/WhatsAppFloat"
 import MiniCart from "./components/MiniCart"
-import SmoothScroll from "./components/SmoothScroll"
+
 
 export const metadata: Metadata = {
   title: "Pokar Home Decors",
@@ -34,9 +34,7 @@ export default function RootLayout({
 
       <body className="bg-[#F7F5F2] text-[#111111] antialiased">
 
-        <SmoothScroll/>
-
-        <Navbar />
+                <Navbar />
 
         <main className="min-h-screen">
           {children}
