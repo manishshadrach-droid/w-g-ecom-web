@@ -9,17 +9,17 @@ const rooms = [
 
 {
 title:"Living Room Styling",
-image:"/product/mandala1.jpg"
+image:"/product/chair.jpg"
 },
 
 {
 title:"Dining Table Decor",
-image:"/product/mandala2.jpg"
+image:"/product/lounge.jpg"
 },
 
 {
-title:"Minimal Wall Art",
-image:"/product/mandala3.jpg"
+title:"Lounge Room Styling",
+image:"/product/sofa.jpg"
 }
 
 ]

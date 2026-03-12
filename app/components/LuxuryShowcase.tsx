@@ -33,7 +33,7 @@ return(
 
 {/* LEFT SLIDER */}
 
-<div className="relative md:col-span-2 bg-[#1f7a3b] rounded-xl overflow-hidden aspect-[16/10]">
+<div className="relative md:col-span-2 bg-black rounded-xl overflow-hidden aspect-[16/10]">
 
 {slides.map((slide,i)=>(
 <Image
@@ -66,7 +66,7 @@ Discover Timeless Interiors
 
 <Link
 href="/shop"
-className="bg-yellow-400 rounded-xl flex items-center justify-center text-2xl font-semibold hover:bg-yellow-300 transition"
+className="bg-[#C6A969]rounded-xl flex items-center justify-center text-2xl font-semibold hover:bg-yellow-300 transition"
 >
 
 Go Shopping →

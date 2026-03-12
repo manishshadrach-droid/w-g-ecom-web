@@ -2,34 +2,359 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Premium typography */
 
-h1,h2,h3,h4{
-letter-spacing:-0.02em;
-font-weight:600;
+/* ------------------------------------------------ */
+/* Base Styles */
+/* ------------------------------------------------ */
+
+@layer base {
+
+html{
+scroll-behavior:smooth;
 }
-
-/* Luxury spacing */
-
-section{
-padding-top:120px;
-padding-bottom:120px;
-}
-
-/* Smooth UI */
-
-button{
-transition:all .3s ease;
-}
-
-img{
-transition:transform .6s ease;
-}
-
-/* subtle background tone */
 
 body{
 background:#ffffff;
 color:#111111;
 font-feature-settings:"liga" 1;
+font-family:system-ui,-apple-system,sans-serif;
+}
+
+h1,h2,h3,h4{
+letter-spacing:-0.02em;
+font-weight:600;
+line-height:1.2;
+}
+
+h1{font-size:clamp(3rem,4vw,4.6rem);}
+h2{font-size:clamp(2.2rem,3vw,3.2rem);}
+h3{font-size:1.5rem;}
+
+p{
+line-height:1.8;
+color:#555;
+}
+
+}
+
+
+/* ------------------------------------------------ */
+/* Navbar Brand */
+/* ------------------------------------------------ */
+
+.navbar-brand{
+
+font-family:var(--font-cinzelDecor),serif;
+
+font-size:42px;
+
+letter-spacing:.18em;
+
+font-weight:700;
+
+color:#C6A969;
+
+}
+
+
+/* ------------------------------------------------ */
+/* Section Typography */
+/* ------------------------------------------------ */
+
+.section-title{
+font-family:var(--font-cursive),serif;
+font-size:clamp(2.6rem,3vw,3.8rem);
+letter-spacing:.02em;
+font-weight:400;
+}
+
+.section-subtitle{
+max-width:620px;
+margin:auto;
+color:#666;
+line-height:1.8;
+font-size:18px;
+}
+
+
+/* ------------------------------------------------ */
+/* Hero Brand */
+/* ------------------------------------------------ */
+
+.hero-brand{
+
+font-family:var(--font-cursive),serif;
+
+font-size:110px;
+
+letter-spacing:.22em;
+
+color:#f5f2ea;
+
+text-shadow:
+0 0 25px rgba(255,255,255,.35),
+0 0 60px rgba(198,169,105,.35);
+
+}
+
+.hero-brand span{
+display:inline-block;
+}
+
+@media (max-width:768px){
+
+.hero-brand{
+font-size:72px;
+}
+
+}
+
+
+/* ------------------------------------------------ */
+/* UI Interaction */
+/* ------------------------------------------------ */
+
+button{
+transition:all .35s ease;
+}
+
+button:hover{
+transform:translateY(-2px);
+}
+
+a{
+transition:all .35s ease;
+}
+
+img{
+transition:transform .8s ease;
+}
+
+img:hover{
+transform:scale(1.04);
+}
+
+
+/* ------------------------------------------------ */
+/* Luxury Divider */
+/* ------------------------------------------------ */
+
+.luxury-divider{
+width:60px;
+height:2px;
+background:#C6A969;
+margin:30px auto;
+}
+
+
+/* ------------------------------------------------ */
+/* Hero Zoom Animation */
+/* ------------------------------------------------ */
+
+.hero-zoom{
+animation:heroZoom 28s ease-in-out infinite;
+}
+
+@keyframes heroZoom{
+
+0%{transform:scale(1.05)}
+50%{transform:scale(1.12)}
+100%{transform:scale(1.05)}
+
+}
+
+
+/* ------------------------------------------------ */
+/* Cursor Light */
+/* ------------------------------------------------ */
+
+.hero-distortion{
+
+position:absolute;
+inset:0;
+pointer-events:none;
+
+background:
+radial-gradient(
+circle 320px at var(--x) var(--y),
+rgba(255,255,255,.25),
+rgba(255,255,255,.12),
+transparent 70%
+);
+
+mix-blend-mode:overlay;
+
+transition:all .08s linear;
+
+z-index:2;
+
+}
+
+
+/* ------------------------------------------------ */
+/* Floating Gold Dust */
+/* ------------------------------------------------ */
+
+.hero-dust{
+
+position:absolute;
+inset:0;
+pointer-events:none;
+overflow:hidden;
+
+}
+
+.hero-dust span{
+
+position:absolute;
+
+width:4px;
+height:4px;
+
+background:rgba(198,169,105,.85);
+
+border-radius:50%;
+
+box-shadow:0 0 6px rgba(198,169,105,.9);
+
+animation:dustFloat linear infinite;
+
+}
+
+.hero-dust span:nth-child(1){left:10%;animation-duration:18s}
+.hero-dust span:nth-child(2){left:25%;animation-duration:20s}
+.hero-dust span:nth-child(3){left:40%;animation-duration:22s}
+.hero-dust span:nth-child(4){left:55%;animation-duration:19s}
+.hero-dust span:nth-child(5){left:70%;animation-duration:23s}
+.hero-dust span:nth-child(6){left:85%;animation-duration:21s}
+.hero-dust span:nth-child(7){left:15%;animation-duration:24s}
+.hero-dust span:nth-child(8){left:35%;animation-duration:20s}
+.hero-dust span:nth-child(9){left:60%;animation-duration:26s}
+.hero-dust span:nth-child(10){left:80%;animation-duration:22s}
+
+@keyframes dustFloat{
+
+0%{
+transform:translateY(100vh);
+opacity:0;
+}
+
+20%{
+opacity:.9;
+}
+
+100%{
+transform:translateY(-10vh);
+opacity:0;
+}
+
+}
+
+
+/* ------------------------------------------------ */
+/* Gold Rays */
+/* ------------------------------------------------ */
+
+.gold-rays{
+
+width:600px;
+height:600px;
+
+background:
+radial-gradient(circle, rgba(198,169,105,0.35) 0%, transparent 70%);
+
+filter:blur(80px);
+
+animation:goldPulse 6s ease-in-out infinite;
+
+}
+
+@keyframes goldPulse{
+
+0%{transform:scale(0.9);opacity:.7;}
+50%{transform:scale(1.1);opacity:1;}
+100%{transform:scale(0.9);opacity:.7;}
+
+}
+
+/* -------------------------------- */
+/* Premium Smoke Logo Effect */
+/* -------------------------------- */
+
+.smoke-container span{
+
+display:inline-block;
+
+transition:
+transform 1.4s ease,
+opacity 1.4s ease,
+filter 1.4s ease;
+
+}
+
+/* disperse smoke */
+
+.smoke-container:hover span{
+
+opacity:0;
+
+filter:blur(16px);
+
+}
+
+/* movement pattern */
+
+.smoke-container:hover span:nth-child(1){
+transform:translate(-90px,-80px) rotate(-25deg);
+}
+
+.smoke-container:hover span:nth-child(2){
+transform:translate(80px,-110px) rotate(20deg);
+}
+
+.smoke-container:hover span:nth-child(3){
+transform:translate(-100px,-70px) rotate(-30deg);
+}
+
+.smoke-container:hover span:nth-child(4){
+transform:translate(90px,-90px) rotate(18deg);
+}
+
+.smoke-container:hover span:nth-child(5){
+transform:translate(-70px,-80px) rotate(-15deg);
+}
+/* splash particles */
+
+.splash-particle{
+
+position:absolute;
+
+width:6px;
+height:6px;
+
+background:#C6A969;
+
+border-radius:50%;
+
+pointer-events:none;
+
+animation:splashParticle 1.2s ease-out forwards;
+
+}
+
+@keyframes splashParticle{
+
+0%{
+transform:scale(1) translate(0,0);
+opacity:1;
+}
+
+100%{
+transform:scale(.3) translate(
+calc(-40px + 80px * random()),
+-80px
+);
+opacity:0;
+}
+
 }

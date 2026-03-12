@@ -5,23 +5,23 @@ import { useCartStore } from "@/lib/store/cartStore"
 import { useEffect, useState } from "react"
 import { ShoppingBag } from "lucide-react"
 
-export default function Navbar() {
+export default function Navbar(){
 
 const items = useCartStore((state)=>state.items)
 const toggleCart = useCartStore((state)=>state.toggleCart)
 
-const [scrolled,setScrolled]=useState(false)
-const [megaOpen,setMegaOpen]=useState(false)
+const [scrolled,setScrolled] = useState(false)
+const [megaOpen,setMegaOpen] = useState(false)
 
 useEffect(()=>{
 
-const handleScroll=()=>{
-setScrolled(window.scrollY>20)
+const handleScroll = ()=>{
+setScrolled(window.scrollY > 20)
 }
 
 window.addEventListener("scroll",handleScroll)
 
-return()=>window.removeEventListener("scroll",handleScroll)
+return ()=> window.removeEventListener("scroll",handleScroll)
 
 },[])
 
@@ -31,27 +31,22 @@ return(
 className={`fixed top-0 w-full z-50 transition-all duration-500
 ${scrolled
 ? "bg-white/80 backdrop-blur-xl border-b border-gray-200 shadow-sm"
-: "bg-transparent"}
-`}
+: "bg-transparent"
+}`}
 >
 
 <div className="max-w-7xl mx-auto px-10 py-6 grid grid-cols-3 items-center">
 
 {/* LOGO */}
 
-<div>
+<div className="flex items-center">
 
-<Link
-href="/"
-className="text-2xl tracking-[0.18em] font-serif text-gray-900 hover:text-[#C6A969] transition"
->
+<h1 className="navbar-brand">
 POKAR
-</Link>
+</h1>
 
 </div>
-
-
-{/* NAV */}
+{/* NAVIGATION */}
 
 <nav className="hidden md:flex justify-center gap-14 text-[13px] tracking-[0.25em] uppercase text-gray-800">
 
@@ -74,7 +69,10 @@ Shop
 <div className="absolute left-1/2 -translate-x-1/2 top-12 w-[720px] bg-white text-black p-10 rounded-2xl shadow-2xl grid grid-cols-3 gap-10 border border-gray-100">
 
 <div>
-<h4 className="font-semibold mb-4 text-sm tracking-wide">Wall Decor</h4>
+
+<h4 className="font-semibold mb-4 text-sm tracking-wide">
+Wall Decor
+</h4>
 
 <Link href="/product/mandala1" className="block mb-2 hover:text-[#C6A969] transition">
 Mandala Art
@@ -87,7 +85,10 @@ Sacred Geometry
 </div>
 
 <div>
-<h4 className="font-semibold mb-4 text-sm tracking-wide">Table Decor</h4>
+
+<h4 className="font-semibold mb-4 text-sm tracking-wide">
+Table Decor
+</h4>
 
 <Link href="#" className="block mb-2 hover:text-[#C6A969] transition">
 Centerpieces
@@ -100,7 +101,10 @@ Decor Bowls
 </div>
 
 <div>
-<h4 className="font-semibold mb-4 text-sm tracking-wide">Collections</h4>
+
+<h4 className="font-semibold mb-4 text-sm tracking-wide">
+Collections
+</h4>
 
 <Link href="#collection" className="block mb-2 hover:text-[#C6A969] transition">
 Premium Collection
@@ -128,7 +132,6 @@ About
 
 </nav>
 
-
 {/* CART */}
 
 <div className="flex justify-end">
@@ -136,6 +139,7 @@ About
 <button
 onClick={toggleCart}
 className="relative flex items-center justify-center w-11 h-11 rounded-full bg-[#C6A969] text-black hover:scale-105 hover:bg-[#b89a58] transition shadow-md"
+
 >
 
 <ShoppingBag size={18}/>

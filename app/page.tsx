@@ -1,3 +1,5 @@
+"use client"
+
 import MegaHero from "./components/MegaHero"
 import LuxuryShowcase from "./components/LuxuryShowcase"
 import CollectionGrid from "./components/CollectionGrid"
@@ -15,7 +17,7 @@ export default function HomePage() {
       {/* HERO */}
       <MegaHero />
 
-      {/* LUXURY SHOWCASE (left slider + right CTA panel) */}
+      {/* LUXURY SHOWCASE */}
       <LuxuryShowcase />
 
       {/* COLLECTION GRID */}
@@ -36,4 +38,5 @@ export default function HomePage() {
     </main>
 
   )
+
 }
