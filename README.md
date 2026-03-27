@@ -1,15 +1,17 @@
-## Where to look
+# AI Product Discovery System
+
+## Where to Look
 
 Backend system is located in:
 
 /server
 
 Key files:
-- services/orchestrator.js
-- services/logger.js
-- routes/metrics.js
+- services/orchestrator.js (core workflow logic)
+- services/logger.js (logging + cost tracking)
+- routes/metrics.js (system observability)
 
-# AI-Assisted Product Discovery System
+---
 
 ## Live Capabilities
 
@@ -24,9 +26,9 @@ Key files:
 
 This is not a chatbot.
 
-This project extends a standard e-commerce application with an AI-driven backend that converts natural language into structured, actionable workflows.
+This system was built by layering AI orchestration on top of an existing production-style e-commerce frontend.
 
-Instead of generating responses, the system interprets intent and executes deterministic logic.
+Instead of generating responses, the system converts natural language into structured, actionable workflows.
 
 ---
 
@@ -90,6 +92,34 @@ System Behavior
 Filters products based on category and budget
 Returns top matching results
 Logs request metrics
+Sample Output
+AI Endpoint
+{
+  "success": true,
+  "interpretation": {
+    "intent": "product_search",
+    "category": "sofa",
+    "budget": 50000
+  },
+  "results": [
+    {
+      "id": 1,
+      "name": "Luxury Leather Sofa",
+      "price": 48000
+    }
+  ],
+  "metrics": {
+    "tokens": 120,
+    "latency": 300
+  }
+}
+Metrics Endpoint
+{
+  "total_requests": 5,
+  "avg_tokens": 120,
+  "avg_latency": 280,
+  "total_cost": 0.0012
+}
 Key Features
 1. Multi-step Workflow
 Query → AI → structured intent → execution → response
