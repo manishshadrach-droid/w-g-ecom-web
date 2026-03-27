@@ -1,3 +1,14 @@
+## Where to look
+
+Backend system is located in:
+
+/server
+
+Key files:
+- services/orchestrator.js
+- services/logger.js
+- routes/metrics.js
+
 # AI-Assisted Product Discovery System
 
 ## Live Capabilities
