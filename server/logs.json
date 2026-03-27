@@ -1,0 +1,1 @@
+{"query":"sofa under 50000","parsed":{"intent":"product_search","category":"sofa","budget":50000,"filters":[]},"tokens":120,"latency":487,"result_count":1,"cost":0.00023999999999999998,"timestamp":"2026-03-27T10:24:37.319Z"}
